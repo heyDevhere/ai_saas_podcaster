@@ -43,7 +43,7 @@ const formSchema = z.object({
 
 const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"];
 
-const createPodcast = () => {
+const CreatePodcast = () => {
   const router=useRouter();
   const [voiceType, setVoiceType] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -320,4 +320,4 @@ const createPodcast = () => {
   );
 };
 
-export default createPodcast;
+export default CreatePodcast;

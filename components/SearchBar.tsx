@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Input } from "./ui/input";
 import { useDebounce } from "@/lib/useDebounce";
 
-const searchBar = () => {
+const SearchBar = () => {
   const [search, setSearch] = useState("");
   const pathname = usePathname();
   const router = useRouter();
@@ -37,4 +37,4 @@ const searchBar = () => {
   );
 };
 
-export default searchBar;
+export default SearchBar;
