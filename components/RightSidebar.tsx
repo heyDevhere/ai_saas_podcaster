@@ -52,7 +52,6 @@ const RightSideBar = () => {
           <Header headerTitle="Top Podcasters" />
           <div className="flex flex-col gap-6">
             {topPodcasters?.slice(0, 3).map((podcaster) => (
-              <Link href={`/profile/${user?.id}`}   key={podcaster._id}>
                 <div
                   className="flex cursor-pointer justify-between"
                   onClick={() => router.push(`/profile/${podcaster.clerkId}`)}
@@ -75,7 +74,6 @@ const RightSideBar = () => {
                     </p>
                   </div>
                 </div>
-              </Link>
             ))}
           </div>
         </section>
