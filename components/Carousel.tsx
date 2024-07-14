@@ -33,7 +33,7 @@ const EmblaCarousel = ({ fansLikeDetail }: CarouselProps) => {
     fansLikeDetail &&
     fansLikeDetail?.filter((item: any) => item.totalPodcasts > 0);
 
-    if(!slides) return <LoaderSpinner/>
+    // if(!slides) return <LoaderSpinner/>
 
   return (
     <section

@@ -60,10 +60,10 @@ const PodcastDetails = ({ params: { podcastId } }: { params: { podcastId: Id<'po
             {podcast?.voicePrompt}
           </p>
         </div>
-        <div className="flex flex-col gap-4">
-          <h1 className="text-18 font-bold text-white-1">Thumbnail Prompt</h1>
+        <div className={`flex flex-col gap-4 ${!podcast.imagePrompt ? 'hidden' : ''}`}>
+        <h1 className="text-18 font-bold text-white-1">Thumbnail Prompt</h1>
           <p className="text-16 font-medium text-white-2">
-            {podcast?.imagePrompt}
+             {podcast?.imagePrompt}
           </p>
         </div>
       </div>
