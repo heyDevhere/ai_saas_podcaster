@@ -3,13 +3,14 @@ import { EmblaOptionsType, EmblaCarouselType } from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { DotButton, useDotButton } from "./EmblaCarouselDotButton";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { CarouselProps } from "@/types";
 import Image from "next/image";
 import LoaderSpinner from "./LoaderSpinner";
 
 const EmblaCarousel = ({ fansLikeDetail }: CarouselProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+  const router=useRouter();
 
   const onNavButtonClick = useCallback((emblaApi: EmblaCarouselType) => {
     const autoplay = emblaApi?.plugins()?.autoplay;

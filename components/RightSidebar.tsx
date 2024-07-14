@@ -7,7 +7,7 @@ import Carousel from "./Carousel";
 import Header from "./Header";
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import LoaderSpinner from "./LoaderSpinner";
 import { cn } from "@/lib/utils";
 import { useAudio } from "@/app/providers/AudioProvider";
@@ -16,7 +16,7 @@ import { Sheet, SheetTrigger } from "./ui/sheet";
 const RightSideBar = () => {
   const { user } = useUser();
   const topPodcasters = useQuery(api.users.getTopUserByPodcastCount);
-  // const router=useRouter();
+  const router=useRouter();
 
   // if(!topPodcasters) return <LoaderSpinner/>
 
@@ -49,7 +49,7 @@ const RightSideBar = () => {
           <Carousel fansLikeDetail={topPodcasters!} />
         </section>
         <section className="flex flex-col gap-8 pt-12">
-          <Header headerTitle="Top Podcastrs" />
+          <Header headerTitle="Top Podcasters" />
           <div className="flex flex-col gap-6">
             {topPodcasters?.slice(0, 3).map((podcaster) => (
               <Link href={`/profile/${user?.id}`}>
