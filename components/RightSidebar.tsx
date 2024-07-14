@@ -20,7 +20,6 @@ const RightSideBar = () => {
 
   if(!topPodcasters) return <LoaderSpinner/>
 
-  const { audio } = useAudio();
 
   return (
     <section className={"right_sidebar"}>
