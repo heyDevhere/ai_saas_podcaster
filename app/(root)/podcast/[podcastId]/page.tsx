@@ -19,9 +19,12 @@ const PodcastDetails = ({ params: { podcastId } }: { params: { podcastId: Id<'po
 
   // if this is true, then i am the owner of the podcast !
   const isOwner = user?.id === podcast?.authorId;
-  const similarPodcasts = useQuery(api.podcasts.getPodcastByVoiceType, {
+  const similarPodcasts = useQuery(api.podcasts.getPodcastBySimilarity, {
     podcastId,
   });
+
+  console.log("here")
+  console.log(similarPodcasts);
 
   if (!similarPodcasts || !podcast) return <LoaderSpinner />;
 

@@ -40,7 +40,6 @@ export interface PodcastProps {
   authorImageUrl: string;
   voicePrompt: string;
   imagePrompt: string | null;
-  voiceType: string;
   audioDuration: number;
   views: number;
 }
@@ -51,7 +50,6 @@ export interface ProfilePodcastProps {
 }
 
 export interface GeneratePodcastProps {
-  voiceType: string;
   setAudio: Dispatch<SetStateAction<string>>;
   audio: string;
   setAudioStorageId: Dispatch<SetStateAction<Id<"_storage"> | null>>;

@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 
 const useGeneratePodcast = ({
   setAudio,
-  voiceType,
+  // voiceType,
   voicePrompt,
   setAudioStorageId,
   image,

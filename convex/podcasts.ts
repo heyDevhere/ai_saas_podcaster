@@ -1,5 +1,8 @@
 import { ConvexError, v } from "convex/values";
 import { mutation, query } from "./_generated/server";
+import Fuse from "fuse.js";
+import { IFuseOptions } from "fuse.js"; 
+import { PodcastProps } from "@/types";
 
 export const getUrl = mutation({
   args: {
@@ -20,7 +23,6 @@ export const createPodcast = mutation({
     imageStorageId: v.id("_storage"),
     voicePrompt: v.string(),
     imagePrompt: v.string(),
-    voiceType: v.string(),
     views: v.number(),
     audioDuration: v.number(),
   },
@@ -70,7 +72,44 @@ export const getPodcastById = query({
   },
 });
 
-export const getPodcastByVoiceType = query({
+
+// fuzzy searching not working !!!
+
+// export const getPodcastBySimilarity = query({
+//   args: {
+//     podcastId: v.id("podcasts"),
+//   },
+//   handler: async (ctx, args) => {
+//     const podcast = await ctx.db.get(args.podcastId);
+//     if (!podcast) {
+//       return [];
+//     }
+
+//     const allpodcast: PodcastProps[] = (await ctx.db.query("podcasts").collect())
+//     .filter(podcast => podcast.audioStorageId !== undefined) as PodcastProps[];    
+
+//     // // Ensuring the list does not contain the original podcast
+//     const filteredPodcasts = allpodcast;
+//     if (filteredPodcasts.length === 0) {
+//       return [];
+//     }
+
+//        const fuseOptions: IFuseOptions<PodcastProps> = {
+//       keys: [ 'podcastDescription'],
+//       threshold: 0.3, // Adjust threshold for similarity matching
+//     };
+
+//     const fuse = new Fuse(filteredPodcasts, fuseOptions);
+//     const searchTerm = `${podcast.podcastDescription}`;
+//     const results = fuse.search(searchTerm);
+
+//     // Return the items from the search results
+//     return results.map(result => result.item);
+//   },
+// });
+
+
+export const getPodcastBySimilarity = query({
   args: {
     podcastId: v.id("podcasts"),
   },
@@ -81,12 +120,14 @@ export const getPodcastByVoiceType = query({
       .query("podcasts")
       .filter((q) =>
         q.and(
-          q.eq(q.field("voiceType"), podcast?.voiceType),
-          q.neq(q.field("_id"), args.podcastId)
+          // q.eq(q.field("voiceType"), podcast?.voiceType),
+          q.eq(q.field("authorId"), podcast?.authorId),
+          // q.eq(q.field("_id"), args.podcastId)
         )
       )
       .collect();
   },
+
 });
 
 

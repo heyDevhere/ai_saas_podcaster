@@ -41,11 +41,11 @@ const formSchema = z.object({
   podcastDescription: z.string().min(2),
 });
 
-const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"];
+// const voiceCategories = ["alloy", "shimmer", "nova", "echo", "fable", "onyx"];
 
 const CreatePodcast = () => {
   const router=useRouter();
-  const [voiceType, setVoiceType] = useState<string | null>(null);
+  // const [voiceType, setVoiceType] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [imagePrompt, setImagePrompt] = useState("");
   const [isAiThumbnail, setIsAiThumbnail] = useState(false);
@@ -86,7 +86,7 @@ const CreatePodcast = () => {
 
      try {
       setIsSubmitting(true);
-      if(!audioUrl || !imageUrl || !voiceType) {
+      if(!audioUrl || !imageUrl) {
         toast({
           title: 'Please generate audio and image',
         })
@@ -99,7 +99,6 @@ const CreatePodcast = () => {
       podcastDescription: data.podcastDescription,
       audioUrl,
       imageUrl,
-      voiceType,
       imagePrompt,
       voicePrompt,
       views: 0,
@@ -176,12 +175,12 @@ const CreatePodcast = () => {
               )}
             />
 
-            <div className="flex flex-col gap-2.5">
+            {/* <div className="flex flex-col gap-2.5">
               <Label className="text-16 font-bold text-white-1">
                 Select AI Voice
               </Label>
               {/* i added className=relative to make the select drop ! , to be down ! */}
-              <Select onValueChange={(value) => setVoiceType(value)}>
+              {/* <Select onValueChange={(value) => setVoiceType(value)}>
                 <SelectTrigger
                   className={cn(
                     "text-16 w-full border-none bg-black-1 text-gray-1 focus-visible:ring-offset-orange-1"
@@ -191,9 +190,9 @@ const CreatePodcast = () => {
                     placeholder="Select AI Voice"
                     className="placeholder:text-gray-1 "
                   />
-                </SelectTrigger>
+                </SelectTrigger> */}
                 {/* position absolute as the , RA , above is position relative ! */}
-                <SelectContent className="absolute  text-16 border-none bg-black-1 font-bold text-white-1  focus-visible:ring-offset-orange-1">
+                {/* <SelectContent className="absolute  text-16 border-none bg-black-1 font-bold text-white-1  focus-visible:ring-offset-orange-1">
                   {voiceCategories.map((category) => (
                     <SelectItem
                       key={category}
@@ -211,8 +210,8 @@ const CreatePodcast = () => {
                     className="hidden"
                   />
                 )}
-              </Select>
-            </div>
+              </Select> */}
+            {/* </div>  */}
 
             <div className="flex flex-col pt-1">
               <GenerateThumbnail
@@ -290,7 +289,7 @@ const CreatePodcast = () => {
             <GeneratePodcast
               setAudioStorageId={setAudioStorageId}
               setAudio={setAudioUrl}
-              voiceType={voiceType!}
+              // voiceType={voiceType!}
               audio={audioUrl}
               voicePrompt={voicePrompt}
               setVoicePrompt={setVoicePrompt}

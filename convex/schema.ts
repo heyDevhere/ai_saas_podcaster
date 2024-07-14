@@ -30,7 +30,7 @@ export default defineSchema({
     imagePrompt: v.string(),
 
     // kis awaaj mai ai podcast generate kerega
-    voiceType: v.string(),
+    // voiceType: v.string(),
 
     audioDuration: v.number(),
 
