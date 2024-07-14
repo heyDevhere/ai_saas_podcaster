@@ -53,6 +53,7 @@ const RightSideBar = () => {
           <div className="flex flex-col gap-6">
             {topPodcasters?.slice(0, 3).map((podcaster) => (
                 <div
+                  key={podcaster._id}
                   className="flex cursor-pointer justify-between"
                   onClick={() => router.push(`/profile/${podcaster.clerkId}`)}
                 >
