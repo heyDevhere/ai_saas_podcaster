@@ -22,7 +22,7 @@ html {
   .right_sidebar {
   /* max xl ..this is causing the trouble to display right side bar  */
     /* @apply sticky right-0 top-0 flex w-[310px] flex-col overflow-y-hidden border-none bg-black-1 px-[30px] pt-8 max-xl:hidden; */
-    @apply sticky right-0 top-0 flex w-[270px] flex-col overflow-y-hidden border-none bg-black-1 px-[30px] pt-8  xl:w-[340px];
+    @apply hidden sm:flex sticky right-0 top-0 flex w-[270px] flex-col overflow-y-hidden border-none bg-black-1 px-[30px] pt-8  xl:w-[340px];
 
   }
   .left_sidebar {
